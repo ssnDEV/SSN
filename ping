@@ -1,0 +1,75 @@
+ 1 #! /bin/bash
+  2 #*Author : Prince.Myshkin
+  3 #Changing : ssnDEV
+  4
+  5
+  6 #*"You should pass us by and forgive us our happiness," said the prince in a low voice!!!"
+  7 #*“Beauty will save the world"!!
+  8 ########################################################################################################
+  9
+ 10 #!"$@" is used for array
+ 11
+ 12
+ 13 for var1 in "$@"; do
+ 14     echo "Pinging $var1"
+ 15     alive=$(ping -c2 $var1)
+ 16     echo $alive
+ 17     if [[ $(echo alive | grep ^64) ]]; then
+ 18         echo "The Node $var1 is Alive!!"
+ 19     elif [[  alive=From  ]]; then
+ 20         echo "The Node $var1 is Destination Host Unreachable"
+ 21     elif [[ alive=Request ]]; then
+ 22         echo "The Node $var1 is Request time out"
+ 23      elif [[ -z $(alive) ]]; then
+ 24         echo "The Node $var1 is Offline"
+ 25
+ 26     else
+ 27         echo "Something is Wrong!!!!"
+ 28     fi
+ 29 done
+ 30
+ 31
+~
+
+
+
+ 13 for var1 in "$@"; do
+ 14     echo "Pinging $var1"
+ 15    # alive=$(ping -c2 $var1 | grep ^64 & )
+ 16     if [[ ping -c2 $var1 | grep ^64 & ]]; then
+ 17         echo "The Node $var1 is Alive!!"
+ 18     elif [[ping -c2 $var1 | grep ^Des & ]]; then
+ 19         echo "The Node $var1 is Destination Host Unreachable"
+ 20     elif [[ping -c2 $var1 | grep ^Req & ]]; then
+ 21         echo "The Node $var1 is Request time out"
+ 22      elif [[ -z  $(ping -c2 $var1 | grep ^64 &) ]]; then
+ 23         echo "The Node $var1 is Offline"
+ 24
+ 25     else
+ 26         echo "Something is Wrong!!!!"
+ 27     fi
+ 28 done
+ 29
+
+
+
+ 13 for var1 in "$@"; do
+ 14     echo "Pinging $var1"
+ 15    # alive=$(ping -c2 $var1 | grep ^64 & )
+ 16     if [[ -n $(ping -c2 $var1 | grep ^64 &) ]]; then
+ 17         echo "The Node $var1 is Alive!!"
+ 18     elif [[ -n $(ping -c2 $var1 | grep ^From &) ]]; then
+ 19         echo "The Node $var1 is Destination Host Unreachable"
+ 20     elif [[ -n $(ping -c2 $var1 | grep ^Req &) ]]; then
+ 21         echo "The Node $var1 is Request time out"
+ 22      elif [[ -z  $(ping -c2 $var1 | grep ^64 &) ]]; then
+ 23         echo "The Node $var1 is Offline"
+ 24
+ 25     else
+ 26         echo "Something is Wrong!!!!"
+ 27     fi
+ 28 done
+ 29
+
+
+
