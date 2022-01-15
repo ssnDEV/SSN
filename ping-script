@@ -1,0 +1,31 @@
+#! /bin/bash
+  2    #*Author : Prince.Myshkin
+  3    #Changing : ssnDEV
+  4
+  5
+  6    #*"You should pass us by and forgive us our happiness," said the prince in a low voice!!!"
+  7    #*“Beauty will save the world"!!
+  8    ########################################################################################################
+  9
+ 10   #!"$@" is used for array
+ 11
+ 12
+ 13    for var1 in "$@"; do
+ 14       echo "Pinging $var1"
+ 15       alive=$(ping -c2 $var1 | awk 'NR>=2 && NR<=2 {print $1}')
+ 16       echo $alive
+ 17      if [[ $alive -eq 64   ]]; then
+ 18           echo "The Node $var1 is Alive!!"
+ 19       elif [[ $alive -eq From  ]]; then
+ 20           echo "The Node $var1 is Destination Host Unreachable"
+ 21       elif [[ $(alive) -eq Request  ]]; then
+ 22           echo "The Node $var1 is Request time out"
+ 23       elif [[ -z $(alive) ]]; then
+ 24           echo "The Node $var1 is Offline"
+ 25
+ 26       else
+ 27           echo "Something is Wrong!!!!"
+ 28       fi
+ 29  done
+~
+~
