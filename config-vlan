@@ -1,0 +1,19 @@
+ #! /usr/bin/python3
+ # Author: SsnDev
+ def config(interface , vlan):
+         print(f'---- Interface gig/0/{interface}---- ')
+         print("switchport mode access" )
+         print(f'switchport access vlan {vlan}')
+         print("spanning-tree portfast" )
+         print("spanning-tree bpduguard enable")
+         print("-----------------------------------------------------")
+  
+ interfaces = {
+          range(1,11) : "10" ,
+          (11 , 13 ,15) : "20" ,
+          range(16,23) : "30"
+ }
+  
+  for interface,vlan  in interfaces.items():
+      for i in interface:
+              config(i , vlan)
